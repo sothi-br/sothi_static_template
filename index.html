@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos site Capsys</title>
+    <style>
+        /* Reset básico e fontes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212; /* Fundo principal bem escuro */
+            color: #EAEAEA; /* Cor de texto padrão clara */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centraliza o conteúdo verticalmente */
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #1E1E1E; /* Fundo do container um pouco mais claro que o body */
+            padding: 30px 25px; /* Aumentei um pouco o padding vertical */
+            border-radius: 12px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5); /* Sombra mais escura e sutil para tema escuro */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.9em; /* Levemente maior */
+            color: #FFFFFF; /* Branco para o título para máximo contraste */
+            margin-bottom: 35px; /* Maior espaçamento inferior */
+            font-weight: 600;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Espaçamento aumentado entre os botões */
+        }
+
+        button {
+            /* Cores vibrantes que se destacam no escuro */
+            background-image: linear-gradient(to right, #3B82F6 0%, #2563EB 100%); /* Azul vibrante */
+            color: white;
+            border: none;
+            padding: 18px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            /* Sombra sutil e colorida que funciona bem em fundos escuros */
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-image: linear-gradient(to right, #2563EB 0%, #1D4ED8 100%); /* Azul um pouco mais escuro no hover */
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3); /* Sombra um pouco mais pronunciada */
+            transform: translateY(-3px); /* Efeito de elevação mais pronunciado */
+        }
+
+        button:active {
+            transform: translateY(0px) scale(0.97); /* Ajuste no efeito de clique */
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Pequenos ajustes para telas muito pequenas */
+        @media (max-width: 360px) {
+            .container {
+                padding: 25px 15px;
+            }
+            h1 {
+                font-size: 1.7em;
+            }
+            button {
+                padding: 16px 20px;
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Modelos de teste para a home page da SOTHI, escolha um:</h1>
+
+        <div class="button-group">
+            <button onclick="redirecionarPara('https://sothi.tec.br/')">Modelo original</button>
+            <button onclick="redirecionarPara('v1/index.html')">Modelo 1</button>
+            <button onclick="redirecionarPara('v2/index.html')">Modelo 2</button>
+			<button onclick="redirecionarPara('v3/index.html')">Modelo 3</button>
+
+        </div>
+    </div>
+
+    <script>
+        function redirecionarPara(url) {
+            // Opcional: Adicionar um pequeno feedback visual antes de redirecionar
+            // const clickedButton = event.target.closest('button');
+            // if (clickedButton) {
+            //     clickedButton.style.opacity = '0.8';
+            // }
+            setTimeout(() => {
+                window.location.href = url;
+            }, 100); // Delay para permitir qualquer efeito visual sutil
+        }
+    </script>
+
+</body>
+</html>
