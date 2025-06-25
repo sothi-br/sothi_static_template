@@ -59,7 +59,7 @@ button { font-family: inherit; }
 .section-subtitle { display: block; font-size: 0.9rem; font-weight: 500; color: var(--primary-accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; }
 .section-title { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 700; }
 .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent)); margin: 1rem auto 0; border-radius: 2px; }
-.about-content .section-title::after { margin-left: 0; } 
+/*.about-content .section-title::after { margin-left: 0; } 
 
 /* Classe para todos os elementos que devem ter a cor de tema animada */
 .theme-animatable {
@@ -87,25 +87,51 @@ button { font-family: inherit; }
 .nav-list li:nth-child(2) { animation-delay: 0.55s; }
 .nav-list li:nth-child(3) { animation-delay: 0.6s; }
 .nav-list li:nth-child(4) { animation-delay: 0.65s; }
+
+.nav-footer-logo {
+    display: none; /* Garante que a logo esteja oculta no desktop */
+}
+
 .nav-link { font-family: var(--font-body); font-weight: 500; color: var(--primary-text); padding: 0.5rem 0; position: relative; }
 .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--primary-accent); transition: width var(--global-transition), background-color 0.5s ease; }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 .nav-link:hover { color: var(--primary-accent); }
 .nav-link.active { color: var(--primary-accent); font-weight: 600; }
-.nav-close { display: none; }
-.nav-toggle { background: none; border: none; padding: 0; display: none; cursor: pointer; }
+
+/* MODIFICAÇÃO AQUI: Esconde o hambúrguer e mostra o X (nav-close) */
+.nav-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    display: none; /* Isso já está correto: escondido por padrão no desktop */
+    cursor: pointer;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
 .hamburger-box { display: inline-block; position: relative; width: 30px; height: 24px; }
 .hamburger-inner { display: block; top: 50%; margin-top: -1px; }
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after { width: 30px; height: 2px; background-color: var(--headings-text); border-radius: 4px; position: absolute; transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after { width: 30px; height: 2px; background-color: var(--headings-text); border-radius: 4px; position: absolute; transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), opacity 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 .hamburger-inner::before, .hamburger-inner::after { content: ''; display: block; }
 .hamburger-inner::before { top: -10px; }
 .hamburger-inner::after { bottom: -10px; }
 
+/* Adicione ou modifique esta regra para garantir que o nav-close esteja oculto no desktop */
+.nav-close {
+    display: none; /* Garante que o 'X' esteja oculto no desktop */
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--primary-text);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Começa invisível, será ativado via JS */
+}
 
 /* ANIMAÇÃO LOGO NAVBAR (SLIDE) */
 .header-logo-container {
     position: relative;
-    width: 224px;
+    width: 150px;
     height: 75px;
     cursor: pointer;
     overflow: hidden;
@@ -221,16 +247,6 @@ button { font-family: inherit; }
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* === 10. MEDIA QUERIES (RESPONSIVIDADE) === */
-@media (max-width: 992px) {
-    .container { max-width: 720px; }
-    .hero-inner { gap: 2rem; }
-    .hero-content h1 { font-size: clamp(2.2rem, 7vw, 3.5rem); }
-    .about-content { flex-direction: column; text-align: center; gap: 3rem; }
-    .about-text { text-align: left; }
-    .about-image { order: -1; margin-bottom: 2rem; }
-    .about-content .section-title::after { margin: 1rem auto 0; }
-}
-
 @media (max-width: 768px) {
     :root { 
         --header-height: 4rem; 
@@ -240,15 +256,74 @@ button { font-family: inherit; }
     .header, .logo, .nav-list li, .reveal-up { animation: none; opacity: 1; }
     .section-title { font-size: clamp(1.8rem, 7vw, 2.2rem); }
     
-    .nav-toggle { display: flex; }
+    /* MODIFICAÇÃO AQUI: */
+    .nav-toggle { 
+        display: flex; /* Garante que o hambúrguer apareça em mobile */
+    }
     
-    .nav-menu { position: fixed; top: 0; right: -100%; width: min(75vw, 320px); height: 100vh; padding: 6rem 2.5rem 3rem; background-color: var(--secondary-bg); transition: right 0.4s var(--ease-out-expo); box-shadow: var(--shadow-lg); border-left: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: flex-start; }
+    /* Esconde o nav-toggle quando o menu está aberto */
+    body.nav-open .nav-toggle {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .nav-menu { 
+        position: fixed; 
+        top: 0; 
+        right: -100%; 
+        width: min(75vw, 320px); 
+        height: 100vh; 
+        padding: 6rem 2.5rem 3rem; 
+        background-color: var(--secondary-bg); 
+        transition: right 0.4s var(--ease-out-expo); 
+        box-shadow: var(--shadow-lg); 
+        border-left: 1px solid var(--border-color); 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: flex-start; 
+        
+    }
     .nav-menu[data-visible="true"] { right: 0; }
-    .nav-list { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; width: 100%; }
+    .nav-list { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; width: 100%;         margin-bottom: auto; /* Empurra a logo para o final do menu */
+}
     .nav-link { display: block; width: 100%; padding: 0.75rem; font-size: 1.1rem; border-radius: var(--border-radius-md); transition: background-color 0.3s, color 0.3s; }
     .nav-link.active { color: var(--primary-accent); background-color: hsla(var(--primary-accent-hue), 100%, 57%, 0.1); }
     .nav-link::after { display: none; }
-    .nav-close { display: block; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.8rem; color: var(--primary-text); cursor: pointer; }
+
+      .nav-footer-logo {
+        display: block;
+        width: 100%; /* Ocupa a largura total do menu */
+        text-align: center; /* Centraliza a imagem */
+        margin-top: 2rem; /* Espaçamento acima da logo */
+        padding-top: 1.5rem; /* Adiciona um padding interno para a logo */
+        border-top: 1px solid var(--border-color); /* Linha divisória sutil */
+    }
+
+    .menu-footer-logo {
+        max-width: 100px; /* Tamanho máximo da logo */
+        height: auto;
+        display: inline-block; /* Para text-align: center funcionar */
+        opacity: 0.8; /* Um pouco mais sutil */
+    }
+    
+    /* Mostra o nav-close quando o menu está aberto */
+    .nav-close { 
+        display: none; /* Escondido por padrão */
+        position: absolute; 
+        top: 1.5rem; 
+        right: 1.5rem; 
+        font-size: 1.8rem; 
+        color: var(--primary-text); 
+        cursor: pointer; 
+        transition: opacity 0.3s ease; /* Adicionei transição */
+        opacity: 0; /* Começa invisível */
+    }
+
+    body.nav-open .nav-close {
+        display: block; /* Mostra o X */
+        opacity: 1; /* Torna-o visível */
+    }
     
     body.nav-open { overflow: hidden; }
     body.nav-open::before { content: ''; position: fixed; inset: 0; background-color: hsla(0, 0%, 0%, 0.5); z-index: 999; backdrop-filter: blur(2px); }
@@ -257,13 +332,25 @@ button { font-family: inherit; }
     .hero-inner { flex-direction: column; justify-content: center; gap: 2rem; }
     .hero-content { order: 1; }
     .hero-image { display: none; }
+        .about-image { margin: 0 auto; max-width: 320px; width: 80%; }
+  
     .hero-buttons { justify-content: center; flex-direction: column; align-items: center; gap: 1rem; }
     .hero-buttons .btn { width: 100%; max-width: 320px; }
     .hero-content h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
     
-    .about-image { margin: 0 auto; max-width: 320px; width: 80%; }
     
     .footer-grid { text-align: center; gap: 2rem; }
     .footer .social-links { justify-content: center; }
     .footer-column .footer-title::after { left: 50%; transform: translateX(-50%); }
+    
+}
+
+@media (max-width: 992px) {
+    .container { max-width: 720px; }
+    .hero-inner { gap: 2rem; }
+    .hero-content h1 { font-size: clamp(2.2rem, 7vw, 3.5rem); }
+    .about-content { flex-direction: column; text-align: center; gap: 3rem; }
+    .about-text { text-align: center; }
+    .about-image { order: -1; margin-bottom: 2rem; }
+    .about-content .section-title::after { margin: 1rem auto 0; }
 }

@@ -61,20 +61,20 @@ document.addEventListener('DOMContentLoaded', function() {
     animatedElements.forEach(el => animationObserver.observe(el));
 
     const sections = document.querySelectorAll('section[id]');
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-                const activeId = entry.target.id;
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${activeId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, { rootMargin: '-40% 0px -60% 0px' });
-    sections.forEach(sec => sectionObserver.observe(sec));
+   const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { // Remova a condição intersectionRatio >= 0.5
+            const activeId = entry.target.id;
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${activeId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}, { rootMargin: '-50% 0px -50% 0px' }); // Ajuste este valor
+sections.forEach(sec => sectionObserver.observe(sec));
 
 
     /**
@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 50;
-        const connectionDistance = 80;
+        const particleCount = 40;
+        const connectionDistance = 70;
 
         // Adicione esta linha para aplicar o filtro de desfoque ao canvas
         // Você pode ajustar o valor '2px' para mais ou menos desfoque

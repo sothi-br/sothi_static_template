@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sothi - Uma Nova Realidade Digital</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="https://img1.wsimg.com/isteam/ip/61fe536f-11f5-4db8-a055-1237beed934e/favicon/3971eb40-fee6-4fcb-84d1-d01963330c80.png/:/rs=w:32,h:32,m">
+</head>
+<body class="dark-theme">
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="header" id="header">
+        <nav class="container nav">
+            <a href="#home" class="nav-logo">
+                <div class="header-logo-container" id="header-logo-container">
+                    <img src="logo_SOTHI_vertical_finish.png" alt="Logo Holding Sothi" class="header-logo" id="nav-logo-holding-start">
+                    <img src="logo_SOTHI_vertical_azul.png" alt="Logo Segmento 1" class="header-logo" id="nav-logo1">
+                    <img src="logo_SOTHI_vertical_black.png" alt="Logo Segmento 2" class="header-logo" id="nav-logo2">
+                </div>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active-link theme-animatable">Início</a></li>
+                    <li><a href="#about" class="nav-link theme-animatable">Sobre</a></li>
+                    <li><a href="#services" class="nav-link theme-animatable">Serviços</a></li>
+                    <li><a href="#contact" class="nav-link theme-animatable">Contato</a></li>
+                </ul>
+                <i class='bx bx-x nav-close' id="nav-close"></i>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero section" id="home">
+            <canvas id="particle-canvas"></canvas>
+            <div class="hero-container container grid">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-gsap-split="chars">Transformando Desafios em Oportunidades</h1>
+                    <p class="hero-description" data-gsap-anim="fade-up">Somos especialistas em consultoria de tecnologia e negócios com o setor público, guiando sua empresa através da complexidade com soluções inovadoras e estratégicas.</p>
+                    <a href="#services" class="btn btn-primary theme-animatable" data-gsap-anim="fade-up">
+                        Explore nossos serviços <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+                </div>
+
+                <div class="hero-image-container" data-gsap-anim="fade-up">
+                     <div class="logo-animation-container" id="logo-container-hero">
+                         <img src="logo_sothi.png" alt="Logo Segmento 1" class="hero-logo" id="hero-logo1">
+                         <img src="logo_sothi.png" alt="Logo Segmento 2" class="hero-logo" id="hero-logo2">
+                         <img src="logo_sothi.png" alt="Logo Holding Sothi" class="hero-logo holding-logo" id="hero-logo-holding">
+                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="differentials section">
+            <div class="container grid">
+                <div class="differential-item gsap-stagger-container">
+                    <i class='bx bx-briefcase-alt-2 differential-icon theme-animatable'></i>
+                    <h3 class="differential-title">Expertise Comprovada</h3>
+                    <p>Anos de experiência navegando pelas complexidades dos negócios.</p>
+                </div>
+                <div class="differential-item gsap-stagger-container">
+                    <i class='bx bx-bulb differential-icon theme-animatable'></i>
+                    <h3 class="differential-title">Inovação Estratégica</h3>
+                    <p>Aplicamos as mais recentes tecnologias e metodologias para resultados duradouros.</p>
+                </div>
+                <div class="differential-item gsap-stagger-container">
+                    <i class='bx bx-group differential-icon theme-animatable'></i>
+                    <h3 class="differential-title">Parceria de Confiança</h3>
+                    <p>Atuamos como uma extensão da sua equipe, comprometidos com o seu sucesso.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about section" id="about">
+            <div class="about-container container grid">
+                <div class="about-data">
+                    <p class="section-subtitle theme-animatable" data-gsap-anim="fade-up">Nossa Essência</p>
+                    <h2 class="section-title" data-gsap-split="words">Inovando com Propósito e Integridade</h2>
+                    <p class="about-description" data-gsap-anim="fade-up">A Sothi Serviços atua com base na sustentabilidade, transparência, moralidade e ética em todas as operações. Acreditamos que o sucesso se constrói sobre uma base sólida de confiança e excelência.</p>
+                </div>
+                <div class="about-image" data-gsap-anim="fade-left">
+                    <img src="https://img1.wsimg.com/isteam/ip/61fe536f-11f5-4db8-a055-1237beed934e/consultoria-empresarial-660x330.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,h:600,cg:true" alt="Consultoria e estratégia Sothi">
+                </div>
+            </div>
+        </section>
+
+        <section class="services section" id="services">
+            <div class="container">
+                <p class="section-subtitle text-center theme-animatable" data-gsap-anim="fade-up">Nossas Soluções</p>
+                <h2 class="section-title text-center" data-gsap-split="words">Serviços Especializados para o seu Sucesso</h2>
+                <div class="services-container grid">
+                    <article class="service-card gsap-stagger-container">
+                        <i class='bx bx-buildings service-icon theme-animatable'></i>
+                        <h3 class="service-title">Negócios com o Governo</h3>
+                        <p class="service-description">Nossa equipe especializada cuida de todo o processo de forma transparente e eficiente.</p>
+                    </article>
+                    <article class="service-card gsap-stagger-container">
+                        <i class='bx bx-brain service-icon theme-animatable'></i>
+                        <h3 class="service-title">Treinamentos Corporativos</h3>
+                        <p class="service-description">Capacitação em LGPD, Compliance e na Lei 14.133/21. Preparamos sua equipe para os desafios.</p>
+                    </article>
+                    <article class="service-card gsap-stagger-container">
+                        <i class='bx bx-shield-quarter service-icon theme-animatable'></i>
+                        <h3 class="service-title">Governança e TI</h3>
+                        <p class="service-description">Alinhamos suas operações de TI às melhores práticas, garantindo segurança e eficiência.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact section" id="contact">
+            <div class="contact-container container">
+                <div class="contact-content">
+                    <p class="section-subtitle" data-gsap-anim="fade-up">Vamos Conversar?</p>
+                    <h2 class="section-title" data-gsap-split="words">Transforme sua Ideia em Realidade</h2>
+                    <p class="contact-description" data-gsap-anim="fade-up">Estamos prontos para ouvir sobre seu próximo projeto. Entre em contato e descubra como podemos ajudar.</p>
+                </div>
+                <div class="contact-button-wrapper" data-gsap-anim="fade-up">
+                    <a href="https://wa.me/5561996618077" target="_blank" class="btn">
+                        Chamar no WhatsApp <i class='bx bxl-whatsapp'></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container grid">
+            <div class="footer-group">
+                <a href="#home" class="footer-logo theme-animatable">Sothi.</a>
+                <p class="footer-tagline">Tecnologia e design que geram valor.</p>
+            </div>
+            <div class="footer-group">
+                <h3 class="footer-title">Navegação</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-group">
+                <h3 class="footer-title">Contato</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+5561996618077">(61) 99661-8077</a></li>
+                    <li><p>Brasília, DF, Brasil</p></li>
+                </ul>
+            </div>
+            <div class="footer-group">
+                <h3 class="footer-title">Siga-nos</h3>
+                <div class="footer-social">
+                    <a href="#" target="_blank" class="footer-social-link" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                    <a href="#" target="_blank" class="footer-social-link" aria-label="Instagram"><i class='bx bxl-instagram-alt'></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">&#169; <span id="current-year"></span> Sothi Serviços e Tecnologia Ltda. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up" aria-label="Voltar ao topo">
+        <i class='bx bx-up-arrow-alt'></i>
+    </a>
+
+    <script src="main.js"></script>
+</body>
+</html>
