@@ -86,8 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 70;
-        const connectionDistance = 120;
+        const particleCount = 50;
+        const connectionDistance = 80;
+
+        // Adicione esta linha para aplicar o filtro de desfoque ao canvas
+        // Você pode ajustar o valor '2px' para mais ou menos desfoque
+        canvas.style.filter = 'blur(0.5px)';
 
         const setCanvasSize = () => {
             canvas.width = canvas.offsetWidth;
@@ -177,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // --- Definição dos Temas ---
         const themeSegmento1 = { heroId: 'hero-logo1', navId: 'nav-logo1', color: '#00007e', hue: 240 };
         const themeSegmento2 = { heroId: 'hero-logo2', navId: 'nav-logo2', color: '#00000e', hue: 240 };
-        
+
         // IMPORTANT: Ensure this theme references the *correct* nav holding logo ID
         const themeHolding = {
             heroId: 'hero-logo-holding',
