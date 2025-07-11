@@ -42,7 +42,6 @@ body { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; backgro
 h1, h2, h3, h4 { font-family: var(--font-headings); color: var(--headings-text); font-weight: 600; text-wrap: balance; }
 ul { list-style: none; }
 a { text-decoration: none; color: var(--primary-accent); transition: color var(--global-transition), background-color var(--global-transition); }
-a:hover { color: var(--primary-accent-hover); }
 img { max-width: 100%; height: auto; display: block; }
 button { font-family: inherit; }
 
