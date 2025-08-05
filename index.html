@@ -144,11 +144,10 @@
 
     <script>
         function redirecionarPara(url) {
-            // Opcional: Adicionar um pequeno feedback visual antes de redirecionar
-            // const clickedButton = event.target.closest('button');
-            // if (clickedButton) {
-            //     clickedButton.style.opacity = '0.8';
-            // }
+             const clickedButton = event.target.closest('button');
+             if (clickedButton) {
+             clickedButton.style.opacity = '0.8';
+             }
             setTimeout(() => {
                 window.location.href = url;
             }, 100); // Delay para permitir qualquer efeito visual sutil
