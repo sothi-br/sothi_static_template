@@ -260,8 +260,14 @@ button { font-family: inherit; }
         display: flex; /* Adicionado para garantir o comportamento de flex container */
     }
 
-    .nav-toggle { display: flex; }
-    .nav-menu { position: fixed; top: 0; right: 0; transform: translateX(100%); width: min(75vw, 320px); height: 100dvh; padding: var(--space-3xl) var(--space-xl) var(--space-xl); background-color: var(--secondary-bg); transition: transform 0.4s var(--ease-out-expo); box-shadow: var(--shadow-lg); border-left: 1px solid var(--border-color); display: flex; flex-direction: column; }
+.nav-toggle { display: flex; }
+
+    /* =================================================================== */
+    /* SUA CORREÇÃO AQUI: Esconde o ícone de hambúrguer quando o menu está aberto */
+    /* =================================================================== */
+    .nav-open .nav-toggle {
+        display: none;
+    }    .nav-menu { position: fixed; top: 0; right: 0; transform: translateX(100%); width: min(75vw, 320px); height: 100dvh; padding: var(--space-3xl) var(--space-xl) var(--space-xl); background-color: var(--secondary-bg); transition: transform 0.4s var(--ease-out-expo); box-shadow: var(--shadow-lg); border-left: 1px solid var(--border-color); display: flex; flex-direction: column; }
     .nav-open .nav-menu { transform: translateX(0); }
     .nav-list { flex-direction: column; align-items: flex-start; gap: 0; width: 100%; margin-bottom: auto; }
     .nav-list li { width: 100%; opacity: 0; transform: translateX(20px); animation: fadeIn 0.4s var(--ease-out-expo) forwards; }
@@ -270,13 +276,32 @@ button { font-family: inherit; }
     .nav-open .nav-list li:nth-child(3) { animation-delay: 0.3s; }
     .nav-open .nav-list li:nth-child(4) { animation-delay: 0.35s; }
     @keyframes fadeIn { to { opacity: 1; transform: translateX(0); } }
-    .nav-link { display: block; width: 100%; padding: var(--space-md); font-size: var(--fs-500); border-radius: var(--border-radius-md); }
-    .nav-link.active { color: var(--primary-accent); background-color: hsla(var(--primary-accent-hue), 100%, 50%, 0.1); }
+      .nav-link {
+        display: block;
+        width: 100%;
+        padding: var(--space-md);
+        font-size: var(--fs-500);
+        border-radius: var(--border-radius-md);
+        text-align: center; /* <<< ADICIONE ESTA LINHA */
+    }
+
+    .nav-link.active {
+        color: var(--primary-accent);
+        background-color: hsla(var(--primary-accent-hue), 100%, 50%, 0.1);
+    }
     .nav-link::after { display: none; }
     .nav-footer-logo { display: block; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border-color); }
     .menu-footer-logo { max-width: 100px; margin: 0 auto; }
-    .nav-close { display: block; position: absolute; top: var(--space-lg); right: var(--space-lg); font-size: 1.8rem; color: var(--primary-text); cursor: pointer; }
-    body.nav-open { overflow: hidden; }
+   .nav-close { 
+        display: block; 
+        position: absolute; 
+        top: var(--space-lg); 
+        right: var(--space-lg);
+        font-size: 1.8rem;
+        color: var(--primary-text);
+        cursor: pointer;
+    }
+        body.nav-open { overflow: hidden; }
     body.nav-open::before { content: ''; position: fixed; inset: 0; background-color: hsla(0, 0%, 0%, 0.4); z-index: 999; }
     
     .logo-animation-container {
