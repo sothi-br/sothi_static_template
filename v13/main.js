@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * 3. LÓGICA DE TEMAS E ANIMAÇÕES
      * ===================================================================
      */
-    const themeHolding = { name: "Sothi", heroId: 'hero-logo-holding', navId: 'nav-logo-holding-start', color: '#04a05c', hue: 151 };
+    const themeHolding = { name: "SOTHI", heroId: 'hero-logo-holding', navId: 'nav-logo-holding-start', color: '#04a05c', hue: 151 };
     const themeSegmento1 = { name: "Educação", heroId: 'hero-logo1', navId: 'nav-logo1', color: '#2196F3', hue: 207 };
     const themeSegmento2 = { name: "TI", heroId: 'hero-logo2', navId: 'nav-logo2', color: '#333333', hue: 0, saturation: 0 };
     const allThemes = [themeHolding, themeSegmento1, themeSegmento2];
