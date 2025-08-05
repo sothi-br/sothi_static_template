@@ -178,6 +178,37 @@ button { font-family: inherit; }
 .back-to-top { position: fixed; bottom: var(--space-lg); right: var(--space-lg); display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: var(--primary-accent); color: var(--text-on-accent); border-radius: 50%; font-size: 1.5rem; z-index: 500; box-shadow: var(--shadow-md); opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s ease; }
 .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
 
+
+/* === 8.1 SEÇÃO DE CONTATO (SIMPLIFICADA) === */
+.contact-section {
+    background-color: var(--headings-text); /* Mantém o fundo escuro */
+    padding-block: var(--space-3xl);
+    text-align: center; /* Centraliza todo o conteúdo */
+}
+
+/* Garante que os títulos fiquem brancos no fundo escuro */
+.contact-section .section-title {
+    color: var(--primary-bg);
+}
+
+/* Estilo para o parágrafo de introdução */
+.contact-intro-text {
+    color: hsl(0, 0%, 85%);
+    max-width: 65ch; /* Limita a largura para melhor leitura */
+    margin: var(--space-md) auto var(--space-xl); /* Espaçamento vertical e centralização horizontal */
+}
+
+/* Área do botão */
+.contact-cta-area .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.contact-cta-area .btn i {
+    font-size: 1.5rem;
+}
+
 /* === 10. MEDIA QUERIES === */
 
 @media (max-width: 992px) {
