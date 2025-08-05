@@ -208,7 +208,76 @@ button { font-family: inherit; }
 .contact-cta-area .btn i {
     font-size: 1.5rem;
 }
+/* === 8.2 SEÇÃO SOBRE (ABOUT) === */
 
+/* Parte 1: Conteúdo Introdutório (Imagem + Texto) */
+.about-intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Coluna de texto um pouco maior */
+    align-items: center;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-3xl); /* Espaço entre a intro e a grade de valores */
+}
+
+.about-intro-image img {
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.about-intro-text h3 {
+    font-size: var(--fs-600);
+    margin-bottom: var(--space-md);
+}
+
+.about-intro-text p {
+    margin-bottom: var(--space-xl);
+}
+
+/* Parte 2: Grade de Valores */
+.about-values-grid {
+    display: grid;
+    /* Grid responsivo: cria colunas de no mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+}
+
+.value-card {
+    background-color: var(--card-bg);
+    padding: var(--space-xl);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--global-transition), box-shadow var(--global-transition);
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.value-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: hsl(var(--primary-accent-hue), 90%, 95%);
+    color: var(--primary-accent);
+    font-size: 2rem;
+    margin-bottom: var(--space-lg);
+}
+
+.value-card h3 {
+    font-size: var(--fs-500);
+    margin-bottom: var(--space-sm);
+}
+
+.value-card p {
+    font-size: var(--fs-300);
+    line-height: 1.5;
+}
 /* === 10. MEDIA QUERIES === */
 
 @media (max-width: 992px) {
@@ -261,13 +330,14 @@ button { font-family: inherit; }
         justify-content: center;
     }
 
-    .about-content {
-        flex-direction: column;
+    /* Substitua a regra .about-content antiga por esta */
+    .about-intro-content {
+        grid-template-columns: 1fr; /* Muda para coluna única */
         text-align: center;
-        gap: var(--space-2xl);
     }
-    .about-image {
-        order: -1;
+    
+    .about-intro-image {
+        order: -1; /* Coloca a imagem em cima do texto no mobile */
     }
     .footer-grid, .footer-column {
         text-align: center;
