@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const backToTopButton = document.getElementById('back-to-top');
     const currentYearSpan = document.getElementById('current-year');
 
+
+
+
+
     /**
      * ===================================================================
      * 2. SCRIPTS GERAIS DA UI (MENU, SCROLL, OBSERVERS)
@@ -42,12 +46,29 @@ document.addEventListener('DOMContentLoaded', function () {
     navLinks.forEach(link => link.addEventListener('click', closeMenu));
 
 
-    // Lógica de Scroll
-    const handleScroll = () => {
-        if (header) header.classList.toggle('scrolled', window.scrollY > 50);
-        if (backToTopButton) backToTopButton.classList.toggle('visible', window.scrollY > 300);
+const handleScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+        backToTopButton.classList.toggle('visible', window.scrollY > 300);
     };
     window.addEventListener('scroll', handleScroll);
+
+  
+
+    const sections = document.querySelectorAll('section[id]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeId = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${activeId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    sections.forEach(sec => sectionObserver.observe(sec));
 
     // Observer para animações genéricas (exceto o hero)
     const animatedElements = document.querySelectorAll('.animated-item');
@@ -223,4 +244,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateActiveTheme(themeHolding);
     initializeHeader();
     heroIntroAnimation(); // A animação agora começa imediatamente ao carregar a página
+        scrollSpy(); // <<< ADICIONE ESTA LINHA
+
 });
