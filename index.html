@@ -16,84 +16,92 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #121212;
-            /* Fundo principal bem escuro */
             color: #EAEAEA;
-            /* Cor de texto padrão clara */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* Centraliza o conteúdo verticalmente */
             min-height: 100vh;
             padding: 20px;
             line-height: 1.6;
         }
 
         .container {
-            width: 100%;
-            max-width: 500px;
+            width: 90%; /* Aumenta a largura padrão */
+            max-width: 960px; /* Define uma largura máxima maior para desktops */
             background-color: #1E1E1E;
-            /* Fundo do container um pouco mais claro que o body */
-            padding: 30px 25px;
-            /* Aumentei um pouco o padding vertical */
+            padding: 40px 30px; /* Aumenta o padding para telas maiores */
             border-radius: 12px;
             box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5);
-            /* Sombra mais escura e sutil para tema escuro */
             text-align: center;
         }
 
         h1 {
-            font-size: 1.9em;
-            /* Levemente maior */
+            font-size: 2.2em; /* Aumenta a fonte do título para desktop */
             color: #FFFFFF;
-            /* Branco para o título para máximo contraste */
-            margin-bottom: 35px;
-            /* Maior espaçamento inferior */
+            margin-bottom: 40px; /* Maior espaçamento inferior */
             font-weight: 600;
         }
 
         .button-group {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            /* Espaçamento aumentado entre os botões */
+            flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
+            justify-content: center; /* Centraliza os botões na linha */
+            gap: 15px; /* Reduz um pouco o espaçamento entre os botões */
         }
 
         button {
-            /* Cores vibrantes que se destacam no escuro */
             background-image: linear-gradient(to right, #3B82F6 0%, #2563EB 100%);
-            /* Azul vibrante */
             color: white;
             border: none;
-            padding: 18px 25px;
+            padding: 15px 25px; /* Ajusta o padding para o novo layout */
             text-align: center;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 500;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            /* Sombra sutil e colorida que funciona bem em fundos escuros */
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            min-width: 180px; /* Define uma largura mínima para os botões */
         }
 
         button:hover {
             background-image: linear-gradient(to right, #2563EB 0%, #1D4ED8 100%);
-            /* Azul um pouco mais escuro no hover */
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
-            /* Sombra um pouco mais pronunciada */
             transform: translateY(-3px);
-            /* Efeito de elevação mais pronunciado */
         }
 
         button:active {
             transform: translateY(0px) scale(0.97);
-            /* Ajuste no efeito de clique */
             box-shadow: 0 2px 10px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Mídia query para garantir que o layout de coluna continue em telas menores */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 35px;
+            }
+
+            .button-group {
+                flex-direction: column; /* Volta para layout de coluna em telas pequenas */
+                gap: 20px;
+            }
+
+            button {
+                min-width: auto; /* Remove a largura mínima para preencher a largura total */
+                display: flex;
+            }
         }
 
         /* Pequenos ajustes para telas muito pequenas */
@@ -136,22 +144,18 @@
             <button onclick="redirecionarPara('v11/index.html')">Modelo 11</button>
             <button onclick="redirecionarPara('v12/index.html')">Modelo 12</button>
             <button onclick="redirecionarPara('v14/index.html')">Modelo 14</button>
-    
-
-
-
         </div>
     </div>
 
     <script>
         function redirecionarPara(url) {
-             const clickedButton = event.target.closest('button');
-             if (clickedButton) {
-             clickedButton.style.opacity = '0.8';
-             }
+            const clickedButton = event.target.closest('button');
+            if (clickedButton) {
+                clickedButton.style.opacity = '0.8';
+            }
             setTimeout(() => {
                 window.open(url, '_blank');
-            }, 100); // Delay para permitir qualquer efeito visual sutil
+            }, 100);
         }
     </script>
 
